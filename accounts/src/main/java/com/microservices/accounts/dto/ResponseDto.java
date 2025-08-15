@@ -1,4 +1,4 @@
-package com.spring_boot_microservices.dto;
+package com.microservices.accounts.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

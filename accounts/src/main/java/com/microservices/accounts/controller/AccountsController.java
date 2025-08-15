@@ -1,11 +1,12 @@
-package com.spring_boot_microservices.controller;
+package com.microservices.accounts.controller;
 
-import com.spring_boot_microservices.constant.AccountsConstant;
-import com.spring_boot_microservices.dto.AccountsDto;
-import com.spring_boot_microservices.dto.CustomerDto;
-import com.spring_boot_microservices.dto.ResponseDto;
-import com.spring_boot_microservices.service.IAccountsService;
-import lombok.AllArgsConstructor;
+import com.microservices.accounts.constant.AccountsConstant;
+import com.microservices.accounts.dto.CustomerDto;
+import com.microservices.accounts.dto.ResponseDto;
+import com.microservices.accounts.service.IAccountsService;
+
+
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,5 +28,18 @@ public class AccountsController {
     public ResponseEntity<CustomerDto> fetchAccountDetails(@RequestParam String mobileNumber) {
         CustomerDto customerDto=accountsService.getAccountByMobileNumber(mobileNumber);
         return ResponseEntity.status(HttpStatus.OK).body(customerDto);
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity<ResponseDto> deleteAccount(@RequestParam String mobileNumber) {
+        boolean isDeleted = accountsService.deleteAccount(mobileNumber);
+        if(isDeleted) {
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(new ResponseDto(AccountsConstant.STATUS_200, AccountsConstant.MESSAGE_200));
+        }else{
+            return ResponseEntity
+                    .status(HttpStatus.EXPECTATION_FAILED)
+                    .body(new ResponseDto(AccountsConstant.STATUS_417, AccountsConstant.MESSAGE_417_DELETE));
+        }
     }
 }

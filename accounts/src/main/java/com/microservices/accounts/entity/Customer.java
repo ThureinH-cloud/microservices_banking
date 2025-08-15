@@ -1,4 +1,4 @@
-package com.spring_boot_microservices.entity;
+package com.microservices.accounts.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

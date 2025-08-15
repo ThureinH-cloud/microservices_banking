@@ -1,5 +1,6 @@
-package com.spring_boot_microservices.entity;
+package com.microservices.accounts.entity;
 
+import com.microservices.accounts.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Accounts extends BaseEntity{
+public class Accounts extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_number")

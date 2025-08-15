@@ -1,23 +1,22 @@
-package com.spring_boot_microservices.mapper;
+package com.microservices.accounts.mapper;
 
-import com.spring_boot_microservices.dto.AccountsDto;
-import com.spring_boot_microservices.entity.Accounts;
+
+import com.microservices.accounts.dto.AccountsDto;
+import com.microservices.accounts.entity.Accounts;
 
 public class AccountMapper {
-    public static AccountsDto mapToAccountsDto(Accounts accounts) {
-        return new AccountsDto(
-                accounts.getCustomerId(),
-                accounts.getAccountNumber(),
-                accounts.getAccountType(),
-                accounts.getBranchAddress()
-        );
-    };
-    public static Accounts mapToAccounts(AccountsDto accountsDto) {
-        return new Accounts(
-                accountsDto.getAccountNumber(),
-                accountsDto.getCustomerId(),
-                accountsDto.getAccountType(),
-                accountsDto.getBranchAddress()
-        );
+    public static AccountsDto mapToAccountsDto(Accounts accounts,AccountsDto accountsDto) {
+        accountsDto.setCustomerId(accounts.getCustomerId());
+        accountsDto.setAccountNumber(accounts.getAccountNumber());
+        accountsDto.setAccountType(accounts.getAccountType());
+        accountsDto.setBranchAddress(accounts.getBranchAddress());
+        return accountsDto;
+    }
+    public static Accounts mapToAccounts(AccountsDto accountsDto,Accounts accounts) {
+        accounts.setCustomerId(accountsDto.getCustomerId());
+        accounts.setAccountNumber(accountsDto.getAccountNumber());
+        accounts.setAccountType(accountsDto.getAccountType());
+        accounts.setBranchAddress(accountsDto.getBranchAddress());
+        return accounts;
     }
 }

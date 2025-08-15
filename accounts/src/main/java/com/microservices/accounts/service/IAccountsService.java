@@ -1,9 +1,12 @@
-package com.spring_boot_microservices.service;
+package com.microservices.accounts.service;
 
-import com.spring_boot_microservices.dto.CustomerDto;
+
+import com.microservices.accounts.dto.CustomerDto;
 
 public interface IAccountsService {
     void create(CustomerDto customerDto);
 
     CustomerDto getAccountByMobileNumber(String mobileNumber);
+
+    boolean deleteAccount(String mobileNumber);
 }

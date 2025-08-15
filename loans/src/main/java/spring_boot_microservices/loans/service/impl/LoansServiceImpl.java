@@ -1,5 +1,6 @@
 package spring_boot_microservices.loans.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import spring_boot_microservices.loans.constants.LoansConstants;
@@ -11,7 +12,9 @@ import spring_boot_microservices.loans.mapper.LoanMapper;
 import spring_boot_microservices.loans.repository.LoansRepository;
 import spring_boot_microservices.loans.service.ILoansService;
 
+import java.beans.Transient;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @AllArgsConstructor
@@ -19,6 +22,7 @@ public class LoansServiceImpl implements ILoansService {
     private LoansRepository loansRepository;
 
     @Override
+    @Transactional
     public void createLoan(String mobileNumber) {
         Optional<Loans> loans=loansRepository.findByMobileNumber(mobileNumber);
         if(loans.isPresent()){
@@ -42,6 +46,8 @@ public class LoansServiceImpl implements ILoansService {
 
     private Loans createNewLoan(String mobileNumber) {
         Loans newLoan = new Loans();
+        long randomLoanNumber = 100000000000L + new Random().nextInt(900000000);
+        newLoan.setLoanNumber(Long.toString(randomLoanNumber));
         newLoan.setMobileNumber(mobileNumber);
         newLoan.setLoanType(LoansConstants.HOME_LOAN);
         newLoan.setTotalLoan(LoansConstants.NEW_LOAN_LIMIT);

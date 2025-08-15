@@ -7,10 +7,18 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDto {
-    private Long customerId;
-    private String name;
-    private String email;
+public class LoansDto {
+    private Long loanId;
+
     private String mobileNumber;
-    private AccountsDto accounts;
+
+    private String loanNumber;
+
+    private String loanType;
+
+    private int totalLoan;
+
+    private int amountPaid;
+
+    private int outstandingAmount;
 }

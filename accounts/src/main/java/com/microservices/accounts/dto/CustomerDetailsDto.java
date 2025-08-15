@@ -7,10 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDto {
-    private Long customerId;
+public class CustomerDetailsDto {
     private String name;
     private String email;
     private String mobileNumber;
-    private AccountsDto accounts;
+    private AccountsDto accountsDto;
+    private CardsDto cardsDto;
+    private LoansDto loansDto;
 }

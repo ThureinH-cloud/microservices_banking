@@ -1,4 +1,4 @@
-package com.spring_boot_microservices.constant;
+package com.microservices.accounts.constant;
 
 public class AccountsConstant {
     private AccountsConstant() {

@@ -1,4 +1,4 @@
-package spring_boot_microservices.cards.dto;
+package com.microservices.accounts.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;

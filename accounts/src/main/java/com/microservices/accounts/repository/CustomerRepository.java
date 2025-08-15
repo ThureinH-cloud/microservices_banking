@@ -1,11 +1,16 @@
-package com.spring_boot_microservices.repository;
+package com.microservices.accounts.repository;
 
-import com.spring_boot_microservices.entity.Customer;
+
+import com.microservices.accounts.dto.CustomerDto;
+import com.microservices.accounts.entity.Customer;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
     Optional<Customer> findByMobileNumber(String mobileNumber);
+
 }

@@ -1,5 +1,6 @@
 package spring_boot_microservices.cards.service.impl;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import spring_boot_microservices.cards.constants.CardsConstants;
@@ -12,12 +13,14 @@ import spring_boot_microservices.cards.repository.CardsRepository;
 import spring_boot_microservices.cards.service.ICardService;
 
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @AllArgsConstructor
 public class CardServiceImpl implements ICardService {
     private CardsRepository cardsRepository;
     @Override
+    @Transactional
     public void createCard(String mobileNumber) {
         Optional<Cards> cards=cardsRepository.findByMobileNumber(mobileNumber);
         if (cards.isPresent()) {
@@ -41,6 +44,8 @@ public class CardServiceImpl implements ICardService {
 
     private Cards createNewCard(String mobileNumber) {
         Cards newCard = new Cards();
+        long randomCardNumber = 100000000000L + new Random().nextInt(900000000);
+        newCard.setCardNumber(Long.toString(randomCardNumber));
         newCard.setMobileNumber(mobileNumber);
         newCard.setCardType(CardsConstants.CREDIT_CARD);
         newCard.setTotalLimit(CardsConstants.NEW_CARD_LIMIT);
