@@ -16,3 +16,4 @@ spring:
            force-pull: true
 server:
   port: 8071
+

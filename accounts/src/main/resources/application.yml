@@ -38,9 +38,14 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8070/eureka/
 
-
+logging:
+  level:
+    com:
+      microservices:
+        accounts: DEBUG
 info:
   app:
     name: "accounts"
     description: "Eazy Bank Accounts Application"
     version: "1.0.0"
+
